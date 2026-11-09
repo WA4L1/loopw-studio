@@ -17,14 +17,22 @@
         <div class="pad-header">
           <span class="pad-number">0{{ track.id }}</span>
           <span class="pad-name">{{ track.name }}</span>
+          @if (track.s3Url) {
+            <span class="badge-cloud">☁️ Cloud</span>
+          }
         </div>
 
         <div class="pad-controls">
           <button
             class="btn-rec"
             [class.active]="track.isRecording"
+            [disabled]="track.isUploading"
             (click)="toggleRecord(track.id)">
-            {{ track.isRecording ? '■ STOP' : '● REC' }}
+            @if (track.isUploading) {
+              Subiendo a S3...
+            } @else {
+              {{ track.isRecording ? '■ STOP' : '● REC' }}
+            }
           </button>
         </div>
 
