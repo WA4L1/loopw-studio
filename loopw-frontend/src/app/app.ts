@@ -1,8 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ConsoleComponent } from './features/loopstation/components/console/console';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, ConsoleComponent],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',

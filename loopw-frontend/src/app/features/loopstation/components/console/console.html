@@ -1,0 +1,39 @@
+<div class="loopw-console-container">
+  <header class="console-header">
+    <h1>LOOPW <span class="accent-text">STUDIO</span></h1>
+    <p class="subtitle">Virtual Loopstation & FX Engine — DragonW Edition</p>
+  </header>
+
+  @if (!audioEngine.isPermissionGranted()) {
+    <div class="mic-permission-banner">
+      <p>Permiso de micrófono requerido para grabar loops en tiempo real.</p>
+      <button class="btn-dukal-primary" (click)="enableMic()">Habilitar Micrófono</button>
+    </div>
+  }
+
+  <div class="pads-grid">
+    @for (track of tracks(); track track.id) {
+      <div class="pad-card" [class.recording]="track.isRecording" [class.has-audio]="track.audioUrl">
+        <div class="pad-header">
+          <span class="pad-number">0{{ track.id }}</span>
+          <span class="pad-name">{{ track.name }}</span>
+        </div>
+
+        <div class="pad-controls">
+          <button
+            class="btn-rec"
+            [class.active]="track.isRecording"
+            (click)="toggleRecord(track.id)">
+            {{ track.isRecording ? '■ STOP' : '● REC' }}
+          </button>
+        </div>
+
+        @if (track.audioUrl) {
+          <div class="audio-player-wrapper">
+            <audio [src]="track.audioUrl" controls loop></audio>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>
