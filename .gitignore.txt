@@ -1,0 +1,13 @@
+# Angular Frontend
+loopw-frontend/node_modules/
+loopw-frontend/dist/
+loopw-frontend/.angular/
+
+# Python Backend
+backend/venv/
+backend/__pycache__/
+*.pyc
+
+# IDEs
+.vscode/
+.idea/
